@@ -1,0 +1,31 @@
+[0;33mCleaning object files... [0;32m[======]🗑️[0m
+[0;33mRemoving executable file... [0;32m[======]🗑️[0m
+[0;33mCompiling... [0;32m[====]✅[0mIn file included from src/Form.cpp:1:
+Includes/Form.hpp: In copy constructor ‘Form::Form(const Form&)’:
+Includes/Form.hpp:15:19: error: ‘Form::minToExec’ will be initialized after [-Werror=reorder]
+   15 |         const int minToExec;
+      |                   ^~~~~~~~~
+Includes/Form.hpp:14:19: error:   ‘const int Form::minToSign’ [-Werror=reorder]
+   14 |         const int minToSign;
+      |                   ^~~~~~~~~
+src/Form.cpp:14:1: error:   when initialized here [-Werror=reorder]
+   14 | Form::Form(const Form& other) : _name(other.getName()), minToExec(other.getMinToExec()), minToSign(other.getMinToSign()), _signed(other.getSignedOrNot()){};
+      | ^~~~
+Includes/Form.hpp:14:19: error: ‘Form::minToSign’ will be initialized after [-Werror=reorder]
+   14 |         const int minToSign;
+      |                   ^~~~~~~~~
+Includes/Form.hpp:13:17: error:   ‘bool Form::_signed’ [-Werror=reorder]
+   13 |         bool    _signed;
+      |                 ^~~~~~~
+src/Form.cpp:14:1: error:   when initialized here [-Werror=reorder]
+   14 | Form::Form(const Form& other) : _name(other.getName()), minToExec(other.getMinToExec()), minToSign(other.getMinToSign()), _signed(other.getSignedOrNot()){};
+      | ^~~~
+src/Form.cpp: In function ‘std::ostream& operator<<(std::ostream&, Form&)’:
+src/Form.cpp:58:1: error: no return statement in function returning non-void [-Werror=return-type]
+   58 | }
+      | ^
+src/Form.cpp:52:40: error: unused parameter ‘out’ [-Werror=unused-parameter]
+   52 | std::ostream& operator<<(std::ostream& out, Form& f)
+      |                          ~~~~~~~~~~~~~~^~~
+cc1plus: all warnings being treated as errors
+make: *** [Makefile:30: obj/Form.o] Error 1
