@@ -5,7 +5,7 @@
 
 class Bureaucrat;
 
-class Form
+class AForm
 {
 private:
 	/* data */
@@ -14,11 +14,11 @@ private:
 	const int minToSign;
 	const int minToExec;
 public:
-	Form(/* args */);
-	Form(const std::string& name, int signLevel, int execLevel);
-	Form(const Form&);
-	Form& operator=(const Form&);
-	virtual ~Form();
+	AForm(/* args */);
+	AForm(const std::string& name, int signLevel, int execLevel);
+	AForm(const AForm&);
+	AForm& operator=(const AForm&);
+	virtual ~AForm();
 	class GradeTooHighException :public std::exception
 	{
 		 const char* what() const throw();
@@ -27,19 +27,29 @@ public:
 	{
 		 const char* what() const throw();
 	};
-	class AlreadyBeSigned: public std::exception
+	class AlreadyBeSigned : public std::exception
 	{
 		 const char* what() const throw();
 	};
-
+	class UnsignedFormException : public std::exception
+	{
+		 const char* what() const throw();
+	};
+	class UnsuccessException : public std::exception
+	{
+		 const char* what() const throw();
+	};
+	
 	void	beSigned(Bureaucrat& bure);
 	std::string getName() const;
 	bool	getSignedOrNot() const;
 	int	getMinToSign() const;
 	int	getMinToExec() const;
+	virtual std::string getTarget() const;
+	virtual void execute(Bureaucrat const & executor) const = 0;
 };
 
-std::ostream& operator<<(std::ostream&, Form&);
+std::ostream& operator<<(std::ostream&, AForm&);
 
 
 #endif

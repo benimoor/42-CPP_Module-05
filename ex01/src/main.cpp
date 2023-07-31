@@ -75,6 +75,7 @@ int main()
 	
 	std::cout << "___________________ START TEST beSigned(Bureaucrat& brt) func ___________________" << std::endl << std::endl;
 	
+	try{
 	Bureaucrat Davit("Davit", 90);
 
 	Form balance_7("balance_7", 100, 80);
@@ -96,7 +97,11 @@ int main()
 	balance_10.beSigned(Davit);
 
 	std::cout << "\n___________________ END TEST beSigned(Bureaucrat& brt) func ___________________" << std::endl << std::endl;
-
+	}
+	catch (const std::exception& e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
 	
 	return 0;
 }

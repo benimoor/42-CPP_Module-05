@@ -1,4 +1,4 @@
-NAME = Interface
+NAME = Form
 
 CC = c++
 OBJS_DIR = obj

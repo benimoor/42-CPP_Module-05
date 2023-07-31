@@ -6,10 +6,13 @@ Form::Form(const std::string& name, int signLevel, int execLevel) : _name(name),
 {
 	_signed = false;
 	if (minToExec < HIGHEST_GRADE || minToSign < HIGHEST_GRADE)
-		throw GradeTooHighException();
+	{
+		throw Form::GradeTooHighException();
+
+	}
 	else if (minToExec > LOWEST_GRADE || minToSign > LOWEST_GRADE)
-		throw GradeTooLowException();
-}
+	{	throw Form::GradeTooLowException();
+}}
 
 Form::Form(const Form& other) : _name(other.getName()), minToSign(other.getMinToSign()), minToExec(other.getMinToExec()){
 	_signed = other.getSignedOrNot();
@@ -30,10 +33,10 @@ const char* Form::GradeTooHighException::what() const throw()
 
 const char* Form::GradeTooLowException::what() const throw()
 {
-	return "Grade too high";
+	return "Grade too low";
 }
 
-const char* Form::AleadyBeSigned::what() const throw()
+const char* Form::AlreadyBeSigned::what() const throw()
 {
 	return "Form has aleady signed";
 }
