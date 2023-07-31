@@ -29,7 +29,7 @@ public:
 	Bureaucrat(const Bureaucrat&);
 	Bureaucrat& operator=(const Bureaucrat&);
 	Bureaucrat(std::string const, int const);
-	virtual ~Bureaucrat();
+	~Bureaucrat();
 public:
 	std::string getName() const;
 	int			getGrade() const;

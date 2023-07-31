@@ -76,19 +76,7 @@ int main()
 	{
 		std::cerr << e.what() << std::endl;
 	}
-	
-	try
-	{
-		Bureaucrat a_5("Ani", 10);
-		RobotomyRequestForm sh_5("Harevan Ani");
-		
-		sh_5.beSigned(a_5);
-		a_5.executeForm(sh_5);
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << std::endl;
-	}
+
 
 	std::cout << "__________________ END try and catch __________________" << std::endl << std::endl;
 

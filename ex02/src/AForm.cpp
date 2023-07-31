@@ -6,13 +6,10 @@ AForm::AForm(const std::string& name, int signLevel, int execLevel) : _name(name
 {
 	_signed = false;
 	if (minToExec < HIGHEST_GRADE || minToSign < HIGHEST_GRADE)
-	{
 		throw AForm::GradeTooHighException();
-
-	}
-	else if (minToExec > LOWEST_GRADE || minToSign > LOWEST_GRADE)
-	{	throw AForm::GradeTooLowException();
-}}
+	if (minToExec > LOWEST_GRADE || minToSign > LOWEST_GRADE)
+		throw AForm::GradeTooLowException();
+}
 
 AForm::AForm(const AForm& other) : _name(other.getName()), minToSign(other.getMinToSign()), minToExec(other.getMinToExec()){
 	_signed = other.getSignedOrNot();
@@ -53,15 +50,15 @@ const char* AForm::UnsuccessException::what() const throw()
 
 void		AForm::beSigned(Bureaucrat& bure)
 {
+	this->_signed = true;
 	if (bure.getGrade() > this->getMinToSign())
 		this->_signed = false;	
-	else
-		this->_signed = true;
+
 	bure.signForm(*this);
 }
 
 std::string AForm::getName() const {return _name;}
-std::string AForm::getTarget() const {return "Undefind";}
+std::string AForm::getTarget() const {return "Undefined";}
 bool		AForm::getSignedOrNot() const {return _signed;}
 int	AForm::getMinToSign() const {return minToSign;}
 int	AForm::getMinToExec() const {return minToExec;}

@@ -20,14 +20,15 @@ class AForm;
 class ShrubberyCreationForm : public AForm
 {
 private:
-	const std::string _target;
+	std::string _target;
 	/* data */
 public:
 	ShrubberyCreationForm(const ShrubberyCreationForm&);
 	ShrubberyCreationForm& operator=(const ShrubberyCreationForm&);
 	ShrubberyCreationForm(const std::string&);
 	ShrubberyCreationForm(/* args */);
-	virtual ~ShrubberyCreationForm();
+	~ShrubberyCreationForm();
+	
 	void execute(Bureaucrat const & executor) const;
 	std::string getTarget() const;
 };

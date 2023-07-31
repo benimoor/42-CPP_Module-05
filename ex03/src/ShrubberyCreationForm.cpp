@@ -6,7 +6,7 @@
 /*   By: ergrigor <ergrigor@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 20:09:43 by ergrigor          #+#    #+#             */
-/*   Updated: 2023/07/31 18:43:45 by ergrigor         ###   ########.fr       */
+/*   Updated: 2023/07/31 20:38:23 by ergrigor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,16 @@
 ShrubberyCreationForm::ShrubberyCreationForm() : AForm("Shrubbery", 145, 137), _target("NoName"){};
 
 ShrubberyCreationForm::ShrubberyCreationForm(const std::string &name) : AForm("Shrubbery", 145, 137), _target(name){};
+
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& a) : AForm(a.getName(), a.getMinToSign(), a.getMinToExec()), _target(a.getTarget()) {};
+ShrubberyCreationForm& ShrubberyCreationForm::operator = (const ShrubberyCreationForm& a)
+{
+	std::cout << "ShrubberyCreationForm" << a.getTarget() << " can't be assigned by operator =" << std::endl;
+	return *this;
+}
+
+
+ShrubberyCreationForm::~ShrubberyCreationForm(){};
 
 void ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 {
@@ -43,6 +53,5 @@ void ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 	f.close();
 	std::cout << "Shrubbery tree created in file '" << this->getTarget().append("_shrubbery") << "'." << std::endl;
 }
-ShrubberyCreationForm::~ShrubberyCreationForm(){};
 
 std::string ShrubberyCreationForm::getTarget(void) const {return _target;}

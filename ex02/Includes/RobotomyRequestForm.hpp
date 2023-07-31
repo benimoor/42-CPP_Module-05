@@ -22,14 +22,15 @@ class AForm;
 class RobotomyRequestForm : public AForm
 {
 private:
-	const std::string _target;
+	std::string _target;
 	/* data */
 public:
 	RobotomyRequestForm(const RobotomyRequestForm&);
 	RobotomyRequestForm& operator=(const RobotomyRequestForm&);
 	RobotomyRequestForm(const std::string&);
 	RobotomyRequestForm(/* args */);
-	virtual ~RobotomyRequestForm();
+	~RobotomyRequestForm();
+	
 	void execute(Bureaucrat const & executor) const;
 	std::string getTarget() const;
 };

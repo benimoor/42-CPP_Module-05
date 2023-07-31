@@ -1,4 +1,4 @@
-NAME = Form
+NAME = Intern
 
 CC = c++
 OBJS_DIR = obj

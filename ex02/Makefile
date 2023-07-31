@@ -1,4 +1,4 @@
-NAME = Form
+NAME = AForm
 
 CC = c++
 OBJS_DIR = obj

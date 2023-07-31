@@ -1,6 +1,6 @@
 #include "Bureaucrat.hpp"
 
-Bureaucrat::Bureaucrat(/* args */) : _name("NoName"), _grade(LOWEST_GRADE){};
+Bureaucrat::Bureaucrat(/* args */) : _name("NoName"), _grade(150){};
 
 Bureaucrat::Bureaucrat(const Bureaucrat& other) : _name(other.getName()), _grade(other.getGrade()){};
 
@@ -55,7 +55,7 @@ std::ostream& operator<<(std::ostream& out, Bureaucrat& gago)
 void Bureaucrat::signForm(Form& f)
 {
 	if (f.getSignedOrNot())
-		throw Form::AleadyBeSigned();
+		throw Form::AlreadyBeSigned();
 	else
 		std::cout << this->getName() << " couldn’t sign " << f.getName() << " because he/she hasn't enough grade." << std::endl;
 }

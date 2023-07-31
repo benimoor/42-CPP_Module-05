@@ -16,6 +16,16 @@ RobotomyRequestForm::RobotomyRequestForm() : AForm("Robotomy", 72, 45){};
 
 RobotomyRequestForm::RobotomyRequestForm(const std::string &name) : AForm("Robotomy", 72, 45), _target(name){};
 
+RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& a) : AForm(a.getName(), a.getMinToSign(), a.getMinToExec()), _target(a.getTarget()) {};
+RobotomyRequestForm& RobotomyRequestForm::operator = (const RobotomyRequestForm& a)
+{
+	std::cout << "RobotomyRequestForm" << a.getTarget() << " can't be assigned by operator =" << std::endl;
+	return *this;
+}
+
+RobotomyRequestForm::~RobotomyRequestForm(){};
+
+
 void RobotomyRequestForm::execute(Bureaucrat const & executor) const
 {
 	if (executor.getGrade() > this->getMinToExec())
@@ -23,13 +33,9 @@ void RobotomyRequestForm::execute(Bureaucrat const & executor) const
 	else if (this->getSignedOrNot() == false)
 		throw UnsignedFormException();
 	if (std::rand() % 2 == 0)
-	{
-		std::cout << "Vrrrrrrrrr... Vrrrrrrrrr... Vrrrrrrrrr..." << std::endl;
-		std::cout << this->getName() << "' has been robotomized successfully 50% of the time" << std::endl;
-	}
+		std::cout  << this->getTarget() << " has been robotomized successfully." << std::endl;
 	else
 		throw UnsuccessException();
 }
-RobotomyRequestForm::~RobotomyRequestForm(){};
 
 std::string RobotomyRequestForm::getTarget(void) const {return _target;}
