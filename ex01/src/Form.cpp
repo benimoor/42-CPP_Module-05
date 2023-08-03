@@ -45,8 +45,8 @@ void		Form::beSigned(Bureaucrat& bure)
 {
 	if (bure.getGrade() > this->getMinToSign())
 		throw GradeTooLowException();
-	_signed = true;
 	bure.signForm(*this);
+	this->_signed = true;
 }
 
 std::string Form::getName() const {return _name;}

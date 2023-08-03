@@ -28,10 +28,9 @@ RobotomyRequestForm::~RobotomyRequestForm(){};
 
 void RobotomyRequestForm::execute(Bureaucrat const & executor) const
 {
+	std::srand(time(NULL));
 	if (executor.getGrade() > this->getMinToExec())
 		throw GradeTooLowException();
-	else if (this->getSignedOrNot() == false)
-		throw UnsignedFormException();
 	if (std::rand() % 2 == 0)
 		std::cout  << this->getTarget() << " has been robotomized successfully." << std::endl;
 	else

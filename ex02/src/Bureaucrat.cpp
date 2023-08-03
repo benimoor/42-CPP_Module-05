@@ -55,9 +55,8 @@ std::ostream& operator<<(std::ostream& out, Bureaucrat& gago)
 void Bureaucrat::signForm(AForm& f)
 {
 	if (f.getSignedOrNot())
-		std::cout << this->getName() << " signed " << f.getName() << std::endl;
-	else
-		std::cout << this->getName() << " couldn’t sign " << f.getName() << " because he/she hasn't enough grade." << std::endl;
+		throw AForm::AlreadyBeSigned();
+	std::cout << "Form signed succesfully" << std::endl;
 }
 
 void	Bureaucrat::executeForm(const AForm& f)

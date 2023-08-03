@@ -11,7 +11,7 @@ int main()
         Intern  inter;
         AForm   *ptr;
 
-        std::cout << ob;
+        std::cout << ob <<std::endl;
         try{
                 ob.downGrade();
         }
@@ -20,7 +20,7 @@ int main()
                 std::cout << o.what() << std::endl;
         }
 
-        std::cout << ob;
+        std::cout << ob << std::endl;
         try{
                 ob.upGrade();
         }

@@ -68,9 +68,22 @@ int main()
 
 	try
 	{
-		Bureaucrat a_4("Silva", 100);
+		Bureaucrat a_4("Silva", 1);
 		PresidentialPardonForm sh_4("Harevan Silva");
+		sh_4.beSigned(a_4);
 		a_4.executeForm(sh_4);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
+
+	try
+	{
+		Bureaucrat a_5("Silva", 1);
+		RobotomyRequestForm rbt_4("ROBOTOZ Request");
+		rbt_4.beSigned(a_5);
+		a_5.executeForm(rbt_4);
 	}
 	catch(const std::exception& e)
 	{

@@ -3,7 +3,7 @@
 int	main(void)
 {
 	try {
-		Bureaucrat	davo("davo", 160);
+		Bureaucrat	davo("davo", 2);
 
 		davo.upGrade();
 		davo.upGrade();

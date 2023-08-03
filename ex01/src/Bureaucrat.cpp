@@ -56,6 +56,5 @@ void Bureaucrat::signForm(Form& f)
 {
 	if (f.getSignedOrNot())
 		throw Form::AlreadyBeSigned();
-	else
-		std::cout << this->getName() << " couldn’t sign " << f.getName() << " because he/she hasn't enough grade." << std::endl;
+	std::cout << "Form signed succesfully" << std::endl;
 }

@@ -50,11 +50,10 @@ const char* AForm::UnsuccessException::what() const throw()
 
 void		AForm::beSigned(Bureaucrat& bure)
 {
-	this->_signed = true;
 	if (bure.getGrade() > this->getMinToSign())
-		this->_signed = false;	
-
+		throw GradeTooLowException();
 	bure.signForm(*this);
+	this->_signed = true;
 }
 
 std::string AForm::getName() const {return _name;}
